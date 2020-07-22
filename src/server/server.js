@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const port = "2711";
 
+let weatherData = {};
+
 // Start up an instance of app
 const app = express();
 
@@ -23,6 +25,15 @@ function listening() {
   console.log(`server is running on port: ${port}`);
 }
 
-app.get("/", function(req, res) {
+app.get("/", function (req, res) {
   res.sendFile(path.resolve("dist/index.html"));
 });
+
+app.post("/add", addWeatherInfo);
+
+function addWeatherInfo(req, res) {
+  console.log(req.body);
+  weatherData["date"] = req.body.date;
+  weatherData["temperature"] = req.body.temperature;
+  res.send(weatherData);
+}

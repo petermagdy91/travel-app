@@ -116,7 +116,13 @@ ul {
 }
 
 .show {
-  display: block;
+  display: block !important;
+}
+
+.validation {
+  color: red;
+  font-size: 12px;
+  display: none;
 }
 
 @media only screen and (max-width: 768px) {
